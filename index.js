@@ -1,27 +1,37 @@
 
 const fs = require('fs');
+const path = require('path');
 const EventEmitter = require('events').EventEmitter;
 const OSinfo = require('./modules/OSinfo');
 
 process.stdin.setEncoding('utf-8');
 const StatMode = require('stat-mode');
 
-fs.stat('./cat.jpg', function(err, stats) {
-    let statMode = new StatMode(stats);
-    console.log(statMode.toString());
-});
+// fs.stat('./cat.jpg', function(err, stats) {
+//     let statMode = new StatMode(stats);
+//     console.log(statMode.toString());
+// });
 
-fs.readFile('./tekst.txt', 'utf-8', function(err, data) {
-    console.log('Dane przed zapisem!'.blue);
-    console.log(data);
-    fs.writeFile('./tekst.txt', 'A tak wyglądają po zapisie!', function(err) {
-        if (err) throw err;
-        console.log('Zapisano!'.blue);
-        fs.readFile('./tekst.txt', 'utf-8', function(err, data) {
-            console.log('Dane po zapisie'.blue)
-            console.log(data);
-        });
-    });
+// fs.readFile('./tekst.txt', 'utf-8', function(err, data) {
+//     console.log('Dane przed zapisem!'.blue);
+//     console.log(data);
+//     fs.writeFile('./tekst.txt', 'A tak wyglądają po zapisie!', function(err) {
+//         if (err) throw err;
+//         console.log('Zapisano!'.blue);
+//         fs.readFile('./tekst.txt', 'utf-8', function(err, data) {
+//             console.log('Dane po zapisie'.blue)
+//             console.log(data);
+//         });
+//     });
+// });
+fs.exists(path.join(__dirname,"files","lorem.txt"),function (exists) {
+
+    if (exists) {
+        console.log("Plik istnieje");
+    } else {
+        console.log("Plik nie istnieje");
+    }
+
 });
 
 
