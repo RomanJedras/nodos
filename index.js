@@ -24,10 +24,7 @@ fs.readFile('./tekst.txt', 'utf-8', function(err, data) {
     });
 });
 
-
-
-//
- const emitter = new EventEmitter();
+const emitter = new EventEmitter();
 
 emitter.on('beforeCommand', function(instruction) {
     console.log('You wrote: ' + instruction + ' trying to run command.')
@@ -35,8 +32,6 @@ emitter.on('beforeCommand', function(instruction) {
 emitter.on('afterCommand', function() {
     console.log('Finished command');
 });
-
-
 
 process.stdin.on('readable', function() {
     // tutaj treść tego co ma się wykonać w momencie odczytania wejścia.
@@ -67,8 +62,6 @@ process.stdin.on('readable', function() {
 
         // emitowanie zdarzenia afterCommand (bez parametru)
         emitter.emit('afterCommand');
-
     }
-
 });
 
