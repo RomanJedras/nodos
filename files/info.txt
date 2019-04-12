@@ -1,0 +1,12 @@
+
+Informacje o plikach info.txt,
+Informacje o plikach lorem.txt,
+Informacje o plikach lorem2.txt
+
+Data utworzenia 2019 ,
+Data utworzenia 2019 ,
+Data utworzenia 2019 
+
+ info.txt is File: true,
+ lorem.txt is File: true,
+ lorem2.txt is File: true

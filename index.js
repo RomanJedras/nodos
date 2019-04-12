@@ -24,15 +24,69 @@ const StatMode = require('stat-mode');
 //         });
 //     });
 // });
-fs.exists(path.join(__dirname,"files","lorem.txt"),function (exists) {
+// fs.exists(path.join(__dirname,"files","lorem.txt"),function (exists) {
+//
+//     if (exists) {
+//         console.log("Plik istnieje");
+//     } else {
+//         console.log("Plik nie istnieje");
+//     }
+//
+// });
 
-    if (exists) {
-        console.log("Plik istnieje");
-    } else {
-        console.log("Plik nie istnieje");
+// fs.stat(path.join(__dirname,"files","lorem2.txt"),function (err,stats) {
+//
+//     if (err) {
+//         console.log(`Exist exceptenion:  ${err.message} `);
+//         throw err.path;
+//     }
+//
+//     console.log(`Data uyworzenia: ${stats.birthtime} `);
+//     console.log(`Data ostatniej modyfikacji: ${stats.mtime} `);
+//     console.log(`isFile: ${stats.isFile()} `);
+//     console.log(`isDirectory: ${stats.isDirectory()} `);
+// });
+
+
+const params = {
+    info1 : [],
+    info2 : [],
+    info3 : []
+};
+
+
+fs.readdir(path.join(__dirname,"files"),function (err, files) {
+
+    if (err) {
+        console.log(`Wystapił bład ${err.message}`);
+        throw err;
     }
 
+    files.forEach(function (filename, index) {
+        fs.stat(path.join(__dirname,"files",filename),function (err,stats) {
+
+
+            if(err) {
+                console.log(`Wystapił bład ${err.message}`);
+                throw err;
+            }
+
+             params.info1[index] = '\n' + `Informacje o plikach ${filename}`;
+             params.info2[index] =  '\n' + `Data utworzenia ${stats.birthtime.getFullYear()} `;
+             params.info3[index] =  '\n' + ` ${filename} is File: ${stats.isFile()}`;
+
+
+            fs.writeFile(path.join(__dirname,"files", "info.txt"), params.info1 +'\n' + params.info2+'\n'+params.info3, function(err) {
+                if (err) throw err; // jeśli pojawi się błąd, wyrzuć wyjątek
+                console.log('Zapisano!');
+            });
+
+        })
+    })
+
+
 });
+
 
 
 
