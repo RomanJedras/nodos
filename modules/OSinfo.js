@@ -1,6 +1,7 @@
 
 const os = require('os');
-var colors = require('colors');
+const colors = require('colors');
+
 
 let time = require('./time');
 
