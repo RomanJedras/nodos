@@ -1,8 +1,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const EventEmitter = require('events').EventEmitter;
-const OSinfo = require('./modules/OSinfo');
+
 
 process.stdin.setEncoding('utf-8');
 
@@ -24,22 +23,21 @@ fs.readdir(path.join(__dirname,"files"),function (err, files) {
         fs.stat(path.join(__dirname,"files",filename),function (err,stats) {
 
 
-            if(err) {
-                console.log(`Wystapił bład ${err.message}`);
-                throw err;
-            }
+        if(err) {
+          console.log(`Wystapił bład ${err.message}`);
+          throw err;
+        }
 
-             params.info1[index] = '\n' + `Informacje o plikach ${filename}`;
-             params.info2[index] =  '\n' + `Data utworzenia ${stats.birthtime.getFullYear()} `;
-             params.info3[index] =  '\n' + ` ${filename} is File: ${stats.isFile()}`;
+        params.info1[index] = '\n' + `Informacje o plikach ${filename}`;
+        params.info2[index] =  '\n' + `Data utworzenia ${stats.birthtime.getFullYear()} `;
+        params.info3[index] =  '\n' + ` ${filename} is File: ${stats.isFile()}`;
 
 
-            fs.writeFile(path.join(__dirname,"files", "info.txt"), params.info1 +'\n' + params.info2+'\n'+params.info3, function(err) {
-                if (err) throw err; // jeśli pojawi się błąd, wyrzuć wyjątek
+        fs.writeFile(path.join(__dirname,"files", "info.txt"), params.info1 +'\n' + params.info2+'\n'+params.info3, function(err) {
+            if (err) throw err; // jeśli pojawi się błąd, wyrzuć wyjątek
                 console.log('Zapisano!');
-            });
-
-        })
+        });
+      })
     })
 });
 
