@@ -1,7 +1,7 @@
 
 const http = require('http');
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 
 const EventEmitter = require('events').EventEmitter;
 const OSinfo = require('./modules/OSinfo');
@@ -29,17 +29,11 @@ server.on('request', function (request, response) {
     }
 });
 
-
-
 server.listen(9000, function () {
     console.log('Serwer został uruchomiony na porcie http://localhost:9000')
 });
 
-
-
-
-//
- const emitter = new EventEmitter();
+const emitter = new EventEmitter();
 
 emitter.on('beforeCommand', function(instruction) {
     console.log('You wrote: ' + instruction + ' trying to run command.')
@@ -47,8 +41,6 @@ emitter.on('beforeCommand', function(instruction) {
 emitter.on('afterCommand', function() {
     console.log('Finished command');
 });
-
-
 
 process.stdin.on('readable', function() {
     // tutaj treść tego co ma się wykonać w momencie odczytania wejścia.
