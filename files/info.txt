@@ -7,6 +7,6 @@ Data utworzenia 2019 ,
 Data utworzenia 2019 ,
 Data utworzenia 2019 
 
- info.txt is File: true,
- lorem.txt is File: true,
- lorem2.txt is File: true
+info.txt is File: true,
+lorem.txt is File: true,
+lorem2.txt is File: true
