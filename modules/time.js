@@ -3,14 +3,13 @@
 
 
  function time(v) {
+    if ( v ) {
+        let seconds = v % 60;
+        let minutes = Math.floor((v % 3600) / 60);
+        let hours = Math.floor(v / 3600);
 
-      if ( v > 0 ) {
-      let secunds = v % 60;
-      let minuts = Math.floor((v % 3600) / 60);
-      let houers = Math.floor(v / 3600);
-
-      return houers + 'h' + ":" + ((minuts < 10) ? "0" + minuts + ' min' : minuts + ' min') + ":" + ((secunds < 10) ? "0" + secunds + ' sec.' : secunds + ' sec.');
-  }
+    return hours + 'h' + ":" + ((minutes < 10) ? "0" + minutes + ' min' : minutes + ' min') + ":" + ((seconds < 10) ? "0" + seconds + ' sec.' : secunds + ' sec.');
+    }
  }
 
  module.exports = time;
