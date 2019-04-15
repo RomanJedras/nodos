@@ -2,6 +2,10 @@
 .gitignore
 .idea/
 node_modules
+css
+package-lock.json
+css/style.css
+css/normalize.css
 
 
 
