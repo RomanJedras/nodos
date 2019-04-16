@@ -3,7 +3,7 @@ const http = require('http');
 const color = require('colors');
 const fs = require('fs');
 const path = require('path');
-const pathFiles = path.join(__dirname, '.') + '\\';
+const pathFiles = path.join(__dirname, '.') + '/';
 
 
 process.stdin.setEncoding('utf-8');
@@ -23,7 +23,8 @@ let html, header;
 server.on('request', function (request, response) {
 	
 	let fileName = null;
-
+	
+	
     if (request.url === '/' || request.url === '/index.html') {
     	fileName = 'index.html';
     	html = fs.readFileSync(pathFiles + fileName,'utf8');
